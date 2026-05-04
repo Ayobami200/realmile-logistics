@@ -22,3 +22,9 @@ Thumbs.db
 
 # Alembic (Database migrations)
 alembic.ini
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
