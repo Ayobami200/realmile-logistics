@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
+from app.api.routes import auth, partners, users, parcels
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -26,4 +27,6 @@ async def root():
         "docs": "/docs"
     }
 
-# We will include our routers here in the next steps
+app.include_router(auth.router, prefix=settings.API_V1_STR + "/auth", tags=["Authentication"])
+app.include_router(partners.router, prefix=settings.API_V1_STR + "/partners", tags=["Partners"])
+app.include_router(parcels.router, prefix=settings.API_V1_STR + "/parcels", tags=["Parcels"])
