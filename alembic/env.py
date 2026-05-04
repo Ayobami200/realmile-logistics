@@ -11,7 +11,8 @@ from app.models.base import Base
 # We MUST import all models here so Alembic can "see" them
 from app.models.user import User
 from app.models.partner import Partner
-from app.models.parcel import Parcel, TrackingEvent
+from app.models.parcel import Parcel
+from app.models.parcel import TrackingEvent
 
 # Alembic Config object
 config = context.config

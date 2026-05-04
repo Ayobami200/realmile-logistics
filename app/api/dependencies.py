@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
 from app.db.session import AsyncSessionLocal
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.services import user_svc
 from app.schemas.token import TokenData
 
@@ -48,3 +48,15 @@ async def get_current_user(
     if user is None:
         raise credentials_exception
     return user
+
+def check_admin(current_user: User = Depends(get_current_user)):
+    """
+    Checks if the logged-in user is an ADMIN.
+    Usage: Depends(check_admin)
+    """
+    if current_user.role != UserRole.ADMIN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, 
+            detail="Only Admins can perform this action"
+        )
+    return current_user

@@ -38,3 +38,12 @@ class ParcelOut(BaseModel):
     history: List[TrackingEventOut] = []
 
     model_config = ConfigDict(from_attributes=True)
+
+class ParcelDispatch(BaseModel):
+    waybill_number: str
+    rider_id: int
+
+class StatusUpdate(BaseModel):
+    waybill_number: str
+    status: ParcelStatus
+    notes: Optional[str] = None

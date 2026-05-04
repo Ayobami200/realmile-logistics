@@ -6,7 +6,9 @@ engine = create_async_engine(
     settings.DATABASE_URL, 
     echo=True, 
     future=True,
-    connect_args={"ssl": True} # This tells asyncpg to use SSL
+    connect_args={"ssl": True}, 
+    pool_pre_ping=True,   
+    pool_recycle=3600   
 )
 
 AsyncSessionLocal = async_sessionmaker(

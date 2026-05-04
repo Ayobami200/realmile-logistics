@@ -1,21 +1,22 @@
 from pydantic import BaseModel, EmailStr, ConfigDict
+from typing import Optional, List
 from app.models.user import UserRole
 
-# Data required to create a user (Signup)
 class UserCreate(BaseModel):
     full_name: str
     email: EmailStr
     password: str
-    role: UserRole = UserRole.STAFF # Default role is staff
+    role: UserRole
+    phone_number: Optional[str] = None
+    supervisor_id: Optional[int] = None
 
-# Data we send back to the frontend (View)
-# Notice: No password field! We NEVER send passwords back.
 class UserOut(BaseModel):
     id: int
     full_name: str
     email: EmailStr
     role: UserRole
+    phone_number: Optional[str]
     is_active: bool
+    supervisor_id: Optional[int]
 
-    # This tells Pydantic to read data even if it's an SQLAlchemy object
     model_config = ConfigDict(from_attributes=True)
