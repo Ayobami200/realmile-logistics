@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000/api/v1', // Use 'localhost' instead of 127.0.0.1
+    baseURL: 'http://localhost:8000/api/v1',
 });
 
 // Interceptor to add the JWT token to headers automatically

@@ -30,5 +30,5 @@ async def root():
 app.include_router(auth.router, prefix=settings.API_V1_STR + "/auth", tags=["Authentication"])
 app.include_router(partners.router, prefix=settings.API_V1_STR + "/partners", tags=["Partners"])
 app.include_router(parcels.router, prefix=settings.API_V1_STR + "/parcels", tags=["Parcels"])
-app.include_router(dashboard.router, prefix=settings.API_V1_STR + "/stats", tags=["Dashboard"])
+app.include_router(dashboard.router, prefix=settings.API_V1_STR + "/dashboard", tags=["Dashboard"])
 app.include_router(users.router, prefix=settings.API_V1_STR + "/users", tags=["Users"])

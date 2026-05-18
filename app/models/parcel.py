@@ -11,6 +11,7 @@ class ParcelStatus(str, enum.Enum):
     DELIVERED = "delivered"             # Successfully delivered
     DELIVERY_FAILED = "delivery_failed" # Attempted but failed
     CANCELLED = "cancelled"
+    RETURNED = "returned" 
     RETURN_OVERDUE = "return_overdue"   # Breached the 5-day return SLA
 
 class Parcel(Base):
